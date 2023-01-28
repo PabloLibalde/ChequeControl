@@ -56,8 +56,6 @@ class Deletar:
                 x = Pessoas(pes)
                 print(x.id)
         
-        
-
         resp = db.deletar_pessoa(pessoa)
         if resp == "OK":
             print("Pessoa deletada no db com Sucesso")
