@@ -7,7 +7,7 @@ banco = 'cheques.db'
 
 
 class DataBase:
-    def __init__(self, name = 'banco'):
+    def __init__(self, name = f'{banco}'):
         self.name = name
         
     def connect(self):
@@ -39,22 +39,39 @@ class DataBase:
         connection = sqlite3.connect(banco)
         cursor = connection.cursor()
         try:
-            # cursor.execute
-            print(f"""INSERT INTO pessoas {campos_pessoas}
+            #Inseri o registro no BD
+            cursor.execute(f"""INSERT INTO pessoas {campos_pessoas}
                            VALUES({valores_pessoas})""",pessoa)
-            # connection.commit()
+            connection.commit()
+            cursor.close
             return ("OK")
         except Exception as erro:
             return  (f"----Erro: conectiondb - register_pessoa ---- {erro}")
         
-    def select_all_pessoas(self):
+    def select_all_pessoas():
         try:
             connection = sqlite3.connect(banco)
             cursor = connection.cursor()
-            cursor.execute("SELECT * FROM Pessoas ORDER BY NOME")
+            cursor.execute("SELECT * FROM pessoas ORDER BY NOME")
             pessoas = cursor.fetchall()
+            connection.commit()
             return pessoas
+
         except Exception as erro:
             print(erro)
             pass
 
+    def deletar_pessoa(pessoa):
+        campos_pessoas = ('CPF','NOME','APELIDO','ENDERECO','BAIRRO')
+        valores_pessoas = ("?,?,?,?,?")
+        connection = sqlite3.connect(banco)
+        cursor = connection.cursor()
+        try:
+            #Inseri o registro no BD
+            cursor.execute(f"""DELETE FROM pessoas WHERE {campos_pessoas}
+                           VALUES({valores_pessoas})""",pessoa)
+            connection.commit()
+            cursor.close
+            return ("OK")
+        except Exception as erro:
+            return  (f"----Erro: conectiondb - register_pessoa ---- {erro}")

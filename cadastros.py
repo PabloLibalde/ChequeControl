@@ -2,7 +2,8 @@ from conectionbd import DataBase
 
 # Class inicial do cheque e suas propriedades
 class Pessoas:
-    def __init__(self, cpf,nome,apelido,endereco,bairro):
+    def __init__(self,id,cpf,nome,apelido,endereco,bairro):
+        self.id = str(id)
         self.cpf = str(cpf)
         self.nome = str(nome)
         self.apelido = str(apelido)
@@ -40,3 +41,25 @@ class Cadastrar:
         else:
             print(resp)
 
+class Deletar:
+    
+    def pessoa(pessoa):
+        
+        db = DataBase
+        db.connect
+        
+        lista = ()
+        select = (db.select_all_pessoas(pessoa))
+        
+        for pes in select:
+            if pessoa in pes:
+                x = Pessoas(pes)
+                print(x.id)
+        
+        
+
+        resp = db.deletar_pessoa(pessoa)
+        if resp == "OK":
+            print("Pessoa deletada no db com Sucesso")
+        else:
+            print(resp)
