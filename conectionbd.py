@@ -48,14 +48,14 @@ class DataBase:
         except Exception as erro:
             return  (f"----Erro: conectiondb - register_pessoa ---- {erro}")
         
-    def select_all_pessoas():
+    def select_all_pessoas(self):
         try:
             connection = sqlite3.connect(banco)
             cursor = connection.cursor()
             cursor.execute("SELECT * FROM pessoas ORDER BY NOME")
-            pessoas = cursor.fetchall()
+            sql_pessoas = cursor.fetchall()
             connection.commit()
-            return pessoas
+            return sql_pessoas
 
         except Exception as erro:
             print(erro)
