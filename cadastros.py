@@ -2,13 +2,13 @@ from conectionbd import DataBase
 
 # Class inicial do cheque e suas propriedades
 class Pessoas:
-    def __init__(self,id,cpf,nome,apelido,endereco,bairro):
-        self.id = str(id)
-        self.cpf = str(cpf)
-        self.nome = str(nome)
-        self.apelido = str(apelido)
-        self.endereco = str(endereco)
-        self.bairro = str(bairro)
+    def __init__(self,cpf,nome,apelido,endereco,bairro,id = 'null'):
+        self.id = id
+        self.cpf = cpf
+        self.nome = nome
+        self.apelido = apelido
+        self.endereco = endereco
+        self.bairro = bairro
 
 class Bancos:
     def __init__(self,nome):
@@ -63,3 +63,10 @@ class Deletar:
             print("Pessoa deletada no db com Sucesso")
         else:
             print(resp)
+
+class Teste:
+    def __init__(self,cpf,nome,id = 'null'):
+        self.cpf = cpf
+        self.nome = nome
+        self.id = id
+    
