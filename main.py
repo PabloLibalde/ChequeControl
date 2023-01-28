@@ -25,32 +25,18 @@ pessoa_input = (p.cpf,p.nome,p.apelido,p.endereco,p.bairro)
 # j = (1, '107.978.217.67', 'Pablo Libalde', 'Pablo', 'Rua Argeu Resende, 96', 'Centro')
 
 
-Cadastrar.pessoa(pessoa_input)
+# Cadastrar.pessoa(pessoa_input)
 
-print(db.select_all_pessoas())
+# print(db.select_all_pessoas())
 
-# x = db.select_all_pessoas()
-# for y in x:
-#     # print(y)
-#     lista =['cpf','nome','apelido','endereco','bairro','id']
-#     # print(lista[0])
-#     dic={}
-#     for col in y:
-#         print(col)
-#     #     p= 0
-#         dic[f'{lista[p]}']=col
-#     # print(dic)
+x = DataBase.select_all_pessoas()
+print(x)
+for y in x:
+    print(y)
+    d = ()
+    d = Pessoas(y)
+    print(d.id, d.nome)
 
-# Pablo = Pessoas('107.978.217.67','Pablo Libalde','Pablo','Rua Argeu Resende','Centro')
-# Ketully = Pessoas('98989898','Ketully Brunow','Ketully','Predio da Zinsk','Populares')
-# # print(Pablo.nome,Pablo.cpf)
-
-# def nome(nome):
-#     print('-'*20)
-#     print(f'Pessoa       {nome}')    
-#     print('-'*20)
-    
-    
 
 nome(f'{Ketully.nome}')
 nome(f'{Pablo.nome}')
