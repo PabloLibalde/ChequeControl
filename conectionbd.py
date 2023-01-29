@@ -60,16 +60,27 @@ class DataBase:
         except Exception as erro:
             print(erro)
             pass
+        
+    def select_pessoas(condicao = "id is not null" ,retorno = "*"):
+        try:
+            connection = sqlite3.connect(banco)
+            cursor = connection.cursor()
+            cursor.execute(f"SELECT {retorno} FROM pessoas WHERE {condicao} ORDER BY NOME")
+            pessoas_id = cursor.fetchall()
+            connection.commit()
+            return pessoas_id
 
-    def deletar_pessoa(pessoa):
-        campos_pessoas = ('CPF','NOME','APELIDO','ENDERECO','BAIRRO')
+        except Exception as erro:
+            print(erro)
+            pass
+
+    def deletar_pessoa():
         valores_pessoas = ("?,?,?,?,?")
         connection = sqlite3.connect(banco)
         cursor = connection.cursor()
         try:
             #Inseri o registro no BD
-            cursor.execute(f"""DELETE FROM pessoas WHERE {campos_pessoas}
-                           VALUES({valores_pessoas})""",pessoa)
+            cursor.execute("""DELETE FROM pessoas ORDER BY NOME""")
             connection.commit()
             cursor.close
             return ("OK")
