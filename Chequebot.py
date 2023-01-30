@@ -12,3 +12,13 @@ app = Client(
     api_hash=getenv('TELEGRAM_API_HASH'),
     bot_token=getenv('TELEGRAM_BOT_TOKEN')
 )
+
+from asyncio import run
+
+async def main ():
+
+    await app.start()
+    await app.send_message('ketullybrunow','Olá Ketully Gostosa')
+    await app.stop()
+
+run(main())
