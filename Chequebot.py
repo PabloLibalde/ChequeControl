@@ -18,7 +18,7 @@ from asyncio import run
 async def main ():
 
     await app.start()
-    await app.send_message('ketullybrunow','Olá Ketully Gostosa')
+    await app.send_message('Joaojt','AI é bicho doidoo!!!')
     await app.stop()
 
 run(main())
