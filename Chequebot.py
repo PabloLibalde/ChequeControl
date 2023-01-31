@@ -18,20 +18,20 @@ app = Client(
     )
 
 
-@app.on_message(filter.command('inline'))
-async def inline(cliente,message):
-    botoes = InlineKeyboardMarkup(
-        [
-            [
-                InlineKeyboardButton('Callback',callback_data='0')
-                InlineKeyboardButton(
-                    'Link',
-                    url='https://www.youtube.com/watch?v=bO-ksqJNPXg'
-                    )
+# @app.on_message(filter.command('inline'))
+# async def inline(cliente,message):
+#     botoes = InlineKeyboardMarkup(
+#         [
+#             [
+#                 InlineKeyboardButton('Callback',callback_data='0')
+#                 InlineKeyboardButton(
+#                     'Link',
+#                     url='https://www.youtube.com/watch?v=bO-ksqJNPXg'
+#                     )
                 
-            ]
-        ]
-    )
+#             ]
+#         ]
+#     )
 
 
 
