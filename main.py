@@ -27,8 +27,21 @@ pessoa_input = (p.cpf,p.nome,p.apelido,p.endereco,p.bairro)
 
 # Cadastrar.pessoa(pessoa_input)
 
-print(db.select_all_pessoas())
+# print(db.select_all_pessoas())
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+x = DataBase.select_all_pessoas()
+print(x)
+for y in x:
+    print(y)
+    d = ()
+    d = Pessoas(y)
+    print(d.id, d.nome)
+=======
+<<<<<<< HEAD
+>>>>>>> c8f145629b33bc4836cfad07af658c771e00cced
 # x = db.select_all_pessoas()
 # for y in x:
 #     # print(y)
@@ -40,17 +53,19 @@ print(db.select_all_pessoas())
 #     #     p= 0
 #         dic[f'{lista[p]}']=col
 #     # print(dic)
+<<<<<<< HEAD
+=======
+=======
+x = DataBase.select_pessoas(retorno='ID',condicao='NOME LIKE "%Pablo%"')
+print(x)
+# for y in x:
+#     if 'Pablo' in y:
+#         print(y)
+#         print(y[0])
+>>>>>>> f4e8fdfdc44cd1db1e8e77a9b57d6f1b12b5fede
+>>>>>>> ebc43a3691e7c5c84eaf83feed6eb87546025c52
+>>>>>>> c8f145629b33bc4836cfad07af658c771e00cced
 
-# Pablo = Pessoas('107.978.217.67','Pablo Libalde','Pablo','Rua Argeu Resende','Centro')
-# Ketully = Pessoas('98989898','Ketully Brunow','Ketully','Predio da Zinsk','Populares')
-# # print(Pablo.nome,Pablo.cpf)
-
-# def nome(nome):
-#     print('-'*20)
-#     print(f'Pessoa       {nome}')    
-#     print('-'*20)
-    
-    
 
 nome(f'{Ketully.nome}')
 nome(f'{Pablo.nome}')

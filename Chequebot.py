@@ -18,18 +18,53 @@ app = Client(
     )
 
 
+@app.on_callback_query()
+async def callback(client, callback_query):
+    pages = {
+        'data': {
+            'proximo': InlineKeyboardButton('Próximo', callback_data='page_2'),
+            'anterior': InlineKeyboardButton('Anterior', callback_data='page_3'),
+            'texto': 'Voce esta na página 1'
+        },
+        'page_2': {
+            'proximo': InlineKeyboardButton('Próximo', callback_data='page_3'),
+            'anterior': InlineKeyboardButton('Anterior', callback_data='data'),
+            'texto': 'Voce esta na página 2'
+        },
+        'page_3': {
+            'proximo': InlineKeyboardButton('Próximo', callback_data='data'),
+            'anterior': InlineKeyboardButton('Anterior', callback_data='page_2'),
+            'texto': 'Voce esta na página 3'
+        }
+    }
+    page = pages[callback_query.data]
+    await callback_query.edit_message_text(
+        page['texto'], 
+        reply_markup=InlineKeyboardMarkup([[
+            page['anterior'], page['proximo']
+        ]])
+    )
+    
+
 @app.on_message(filters.command('inline'))
-async def inline(cliente,message):
+async def teclado(cliente, message):
     botoes = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton('Callback',callback_data='0'),
-                InlineKeyboardButton('Link',url='https://www.youtube.com/watch?v=bO-ksqJNPXg')
+                InlineKeyboardButton('Callback',callback_data='data'),
+                InlineKeyboardButton(
+                    'Link',
+                    url='https://www.youtube.com/watch?v=bO-ksqJNPXg'
+                )
                 
             ]
         ]
     )
-    await message.reply('teste',reply_markup=teclado)
+    await message.reply(
+        'Aperta ai no teclado',
+        reply_markup=botoes        
+    )
+
 
 
 
@@ -65,5 +100,5 @@ async def main ():
     await app.send_message('Joaojt','AI é bicho doidoo!!!')
     await app.stop()
 
-app.run()
 print('Rodando!!')
+app.run()
