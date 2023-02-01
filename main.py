@@ -29,6 +29,7 @@ pessoa_input = (p.cpf,p.nome,p.apelido,p.endereco,p.bairro)
 
 # print(db.select_all_pessoas())
 
+<<<<<<< HEAD
 x = DataBase.select_all_pessoas()
 print(x)
 for y in x:
@@ -36,6 +37,28 @@ for y in x:
     d = ()
     d = Pessoas(y)
     print(d.id, d.nome)
+=======
+<<<<<<< HEAD
+# x = db.select_all_pessoas()
+# for y in x:
+#     # print(y)
+#     lista =['cpf','nome','apelido','endereco','bairro','id']
+#     # print(lista[0])
+#     dic={}
+#     for col in y:
+#         print(col)
+#     #     p= 0
+#         dic[f'{lista[p]}']=col
+#     # print(dic)
+=======
+x = DataBase.select_pessoas(retorno='ID',condicao='NOME LIKE "%Pablo%"')
+print(x)
+# for y in x:
+#     if 'Pablo' in y:
+#         print(y)
+#         print(y[0])
+>>>>>>> f4e8fdfdc44cd1db1e8e77a9b57d6f1b12b5fede
+>>>>>>> ebc43a3691e7c5c84eaf83feed6eb87546025c52
 
 
 nome(f'{Ketully.nome}')
