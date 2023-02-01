@@ -7,16 +7,24 @@ from pyrogram.types import (
     InlineKeyboardButton
     )
 
-
-
-
 load_dotenv()
+
+list_servers=['177.70.7.254','200.165.132.147']
+list_ports=['2013','2014','2015']
 
 app = Client(
     'controlcheque_bot',
     api_id=getenv('TELEGRAM_API_ID'),
     api_hash=getenv('TELEGRAM_API_HASH'),
     bot_token=getenv('TELEGRAM_BOT_TOKEN')
+    )
+
+teclado = ReplyKeyboardMarkup(
+        [
+            ['/Lista_Servidores'],
+            ['/Reiniciar_Portas']
+        ],
+        resize_keyboard=True
     )
 
 
@@ -44,63 +52,31 @@ async def callback(client, callback_query):
         page['texto'], 
         reply_markup=InlineKeyboardMarkup([[
             page['anterior'], page['proximo']
-        ]])
+        ]]),
     )
+    print(callback_query)
     
-
-@app.on_message(filters.command('inline'))
-async def teclado(cliente, message):
-    botoes = InlineKeyboardMarkup(
-        [
-            [
-                InlineKeyboardButton('Callback',callback_data='data'),
-                InlineKeyboardButton(
-                    'Link',
-                    url='https://www.youtube.com/watch?v=bO-ksqJNPXg'
-                )
-                
-            ]
-        ]
-    )
-    await message.reply(
-        'Aperta ai no teclado',
-        reply_markup=botoes        
-    )
-
-
-
-
-@app.on_message(filters.command('teclado'))
-async def teclado(client, message):
-    teclado = ReplyKeyboardMarkup(
-        [
-            ['/inline','/Olá!'],
-            ['a','b','c']
-        ],
-        resize_keyboard=True
-    )    
-    await message.reply(
-        'Teclado!',
-        reply_markup=teclado,
-        )
-
-
-
-@app.on_message(filters.command('Start'))
-async def messages(client, message):
-    print(message.chat.username, message.text)
-    await message.reply('Bem vindo!!')
+@app.on_message(filters.command('Lista_Servidores'))
+async def start(client, message):
+    global teclado
+    callback_data='data'
+    
+@app.on_message(filters.command('start'))
+async def start(client, message):
+    global teclado
+    await message.reply('Olááá! Bem vindo! \n'
+                           'Espero poder lhe ajudar. \n'
+                           'Escolha abaixo uma das opções:',
+                            reply_markup=teclado)
+    
 
 @app.on_message()
-async def messages(client, message):
-    print(message.chat.username, message.text)
-    await message.reply(message.text + '???')
-    
-
-async def main ():
-    await app.start()
-    await app.send_message('Joaojt','AI é bicho doidoo!!!')
-    await app.stop()
+async def geral(client, message):
+    global teclado
+    await message.reply(
+        'Escolha abaixo uma das opções',
+        reply_markup=teclado
+        )
 
 print('Rodando!!')
 app.run()
