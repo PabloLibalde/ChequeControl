@@ -18,21 +18,18 @@ app = Client(
     )
 
 
-@app.on_message(filter.command('inline'))
+@app.on_message(filters.command('inline'))
 async def inline(cliente,message):
     botoes = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton('Callback',callback_data='0')
-                InlineKeyboardButton(
-                    'Link',
-                    url='https://www.youtube.com/watch?v=bO-ksqJNPXg'
-                    )
+                InlineKeyboardButton('Callback',callback_data='0'),
+                InlineKeyboardButton('Link',url='https://www.youtube.com/watch?v=bO-ksqJNPXg')
                 
             ]
         ]
     )
-
+    await message.reply('teste',reply_markup=teclado)
 
 
 
@@ -40,7 +37,7 @@ async def inline(cliente,message):
 async def teclado(client, message):
     teclado = ReplyKeyboardMarkup(
         [
-            ['/ajuda','/Olá!'],
+            ['/inline','/Olá!'],
             ['a','b','c']
         ],
         resize_keyboard=True
